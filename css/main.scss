@@ -1,0 +1,553 @@
+$color: (primary:#000,
+secondary: #A4A4A4,
+accent-1: #9A0052,
+accent-2: #33B27B,
+accent-3: #E88A1A,
+);
+
+$fontSizes: (header: 24px,
+header2: 16px,
+body: 14px,
+price: 36px,
+button: 18px
+);
+
+$mobile: 773px;
+$mobile2: 475px;
+$tablet: 1100px;
+
+@mixin mobile {
+
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+
+}
+@mixin mobile2 {
+
+    @media (max-width: #{$mobile2}) {
+        @content;
+    }
+
+}
+@mixin tablet {
+
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+
+}
+
+@function color($color-name) {
+    @return map-get($color, $color-name)
+}
+
+;
+
+@function font($font-size) {
+    @return map-get($fontSizes, $font-size)
+}
+
+;
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Work Sans', sans-serif;
+    background-color: #ccc;
+
+}
+
+li {
+    font-family: 'Work Sans', sans-serif;
+
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Lora', serif;
+}
+
+p {
+    font-size: font(body);
+}
+
+main#container {
+    width: 100%;
+    margin: inherit;
+    padding-top: 0px;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    header#header {
+        display: flex;
+        padding-left: 2.5%;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 25px;
+        align-items: center;
+        background: #fff;
+        @include mobile {
+            margin-bottom: 10px;
+        }
+
+
+
+        a {
+            text-decoration: none;
+            font-size: font(body);
+            color: color(primary);
+
+            &:last-of-type {
+                color: color(accent-1);
+            }
+        }
+
+        p {
+            font-weight: 600;
+            font-size: font(header2);
+        }
+    }
+
+
+    #product_container {
+        width: 95%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product_img-container {
+            width: 47%;
+            @include mobile {
+                width: 90%;
+            }
+        }
+
+        .product_details-container {
+            width: 53%;
+            @include mobile {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.product_details-container {
+    display: flex;
+    flex-direction: column;
+
+    #option {
+        font-size: font(body);
+        color: color(primary);
+        @include mobile {
+            font-size: 12px;}
+
+        i {
+            color: color(accent-1);
+        }
+    }
+
+    #productName {
+        font-size: font(header);
+        width: 85%;
+        padding-top: 0;
+        margin-top: 0;
+        font-weight: 600;
+        @include mobile {
+            font-size: 18px;
+            width: 90%;
+        }
+    }
+
+    .productCode-Brand {
+        display: flex;
+        width: 85%;
+        border-bottom: 0.5px solid #cfcfcfd2;
+        @include mobile {
+            width: 90%;
+        }
+
+        p {
+            color: color(primary);
+            font-weight: 600;
+            padding-right: 23px;
+            @include mobile {
+                padding-right: 15px;
+                font-size: 12px;
+            }
+
+            span {
+                color: color(secondary);
+                font-weight: 400;
+            }
+        }
+
+    }
+
+    .product-pricing {
+        display: flex;
+        width: 85%;
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 0;
+        border-bottom: 0.5px solid #cfcfcfd2;
+
+        h1 {
+            padding: 0;
+            margin: 0;
+            font-size: font(price);
+            color: color(accent-1);
+            @include mobile {
+                font-size: font(header);
+            }
+        }
+
+        .price-cut {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            p:first-child {
+                color: color(secondary);
+                padding-left: 24px;
+                padding-top: 0;
+                margin: 0;
+                text-decoration: line-through;
+            }
+
+            p:last-child {
+                color: color(accent-2);
+                width: 150px;
+                padding-top: 0;
+                margin: 0;
+                padding-left: 24px;
+            }
+        }
+    }
+}
+
+.product-qty-contact {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #cfcfcfd2;
+    width: 85%;
+
+    @include mobile2 {
+        flex-direction: column;
+    }
+    
+     
+
+    .product-qty {
+        display: flex;
+        align-items: center;
+
+        #qty {
+            font-size: font(body);
+            padding-right: 23px;
+        }
+
+        .qty-increment {
+            border: 1px solid #cfcfcfd2;
+            display: flex;
+            height: 30px;
+            align-items: center;
+
+            p {
+                padding: 10px 15px;
+            }
+
+            p:first-child,
+            p:last-child {
+                cursor: pointer;
+            }
+
+        }
+    }
+
+    .product-contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+         
+
+        p:first-child {
+            color: color(secondary);
+            padding-left: 24px;
+            padding-top: 0;
+            margin: 0;
+            @include mobile2 {
+                font-size: 12px;
+                padding-left: 0;
+            }
+        }
+
+        p:last-child {
+            color: color(primary);
+            padding-top: 0;
+            margin: 0;
+            padding-left: 24px;
+            @include mobile2 {
+                font-size: 12px;
+                padding-left: 0;
+
+            }
+        }
+    }
+}
+
+.product-cart-save {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #cfcfcfd2;
+    width: 85%;
+
+    #addToCart {
+        width: 200px;
+        height: 45px;
+        color: #fff;
+        background-color: color(accent-2);
+        border: none;
+        outline: none;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    div {
+        padding-left: 23px;
+        color: color(secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+            background: color(secondary);
+            color: #fff;
+            padding: 10px;
+            border-radius: 100%;
+
+            &:hover {
+                background: color(accent-3);
+
+            }
+        }
+
+        p{
+            @include mobile2 {
+                display: none;
+            }   
+        }
+
+
+    }
+
+}
+
+.product-overview {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 85%;
+
+    h2 {
+        font-size: font(header2);
+        cursor: pointer;
+
+        i {
+            font-size: 12px;
+        }
+    }
+
+   .overview-details, #details {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        
+
+        li {
+            list-style: none;
+            line-height: 18px;
+            color: color(secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: color(accent-2);
+            padding-top: 10px;
+        }
+    }
+
+}
+
+.product_img-container {
+    display: flex;
+    align-items: flex-start;
+
+    @include mobile {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+       
+    }
+    @include tablet {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        margin-top: 0;
+        padding-top: 0;
+
+    }
+
+
+    .project_thumbnails {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        padding-top: 50px;
+
+        @include mobile {
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 90%;
+            padding-top: 0;
+
+
+        }
+        @include tablet {
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 90%;
+            padding-top: 0;
+
+        }
+
+        .thumbnail1,
+        .thumbnail2,
+        .thumbnail3,
+        .thumbnail4 {
+            padding: 0px 0;
+
+            @include tablet {
+                padding-right: 10px;
+
+            }
+
+            img {
+                width: 50px;
+                height: 50px;
+                border: 1px solid color(secondary);
+
+                @include tablet {
+                    width: 50px;
+                    height: 50px;
+
+                }
+
+                &:hover {
+                    border: 1px solid color(accent-3);
+                }
+            }
+        }
+    }
+
+    .project_img {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0px;
+        @include mobile {
+            width: 90%;
+        }
+
+        img {
+            width: 350px;
+            height: 350px;
+            @include mobile {
+                width: 300px;
+            }
+            @include tablet {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        
+
+    }
+}
+
+.product_social,  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    @include tablet {
+        display: none;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0;
+
+        li {
+            list-style: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background: color(secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+
+            i {
+                color: #fff;
+                font-size: font(body);
+            }
+        }
+    }
+}
+
+.social-mobile{
+
+    display: none;
+    @include mobile {
+        display: flex;
+    }
+    
+    
+}
